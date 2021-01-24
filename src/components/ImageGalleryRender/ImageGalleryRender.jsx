@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import ImageGallery from '../ImageGallery/ImageGalary';
 import ButtonLoad from '../Button/Button';
 import  picturesApi  from '../../services/pictureApi.js';
-
+import {PER_PAGE} from '../../services/pictureApi'
 
 
 
@@ -41,6 +41,7 @@ class ImageGalleryRender extends Component {
         
         if(prevProps.pictureName !== this.props.pictureName)
         {
+           
             this.setState({
                 status: 'pending',
             })
@@ -55,6 +56,7 @@ class ImageGalleryRender extends Component {
 
 
     handleLoadMore = (event) => {
+        
         this.setState({spinner: true})
          picturesApi.fetchPicturesApi(this.props.pictureName, counter += 1)
         .then((res) => { return this.setState((prevState) => {return{pictures: [...prevState.pictures, ...res.hits],spinner: false}})})
@@ -113,7 +115,7 @@ class ImageGalleryRender extends Component {
           
            <ImageGallery pictures ={pictures} onClick ={this.handleOnClick} >
                {isModal && <Modal handleOnClickModal ={this.handleOnClickModal} src ={src} name ={name}/>}
-               {pictures.length >= 12 && pictures.length < totalHits? <ButtonLoad onClick ={this.handleLoadMore} name ="load more"/> : ''} 
+               {pictures.length >= PER_PAGE && pictures.length < totalHits? <ButtonLoad onClick ={this.handleLoadMore} name ="load more"/> : ''} 
             </ImageGallery>
                   </>
               
