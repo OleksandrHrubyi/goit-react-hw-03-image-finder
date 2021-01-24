@@ -1,5 +1,7 @@
 .loader {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  left: 50%;
+  bottom: 0px;
+  z-index: 100000;
 }

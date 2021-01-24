@@ -7,23 +7,12 @@ import ImageGallery from './ImageGalleryRender/ImageGalleryRender';
 
 
 
-
-
-
-
-
 class App extends Component  {
 
     state ={
         pictureName: '',
-        
-      
-       
     }
 
-
-    
-    
 
     handleOnSubmit =(pictureName) => {
        
@@ -37,14 +26,12 @@ class App extends Component  {
     render(){
         
         return <Container>
-          
             <SearchBar onSubmit ={this.handleOnSubmit}/>
-            
-             <ImageGallery pictureName ={this.state.pictureName} />
-             <ToastContainer/>
-       
-           
+            <ImageGallery pictureName ={this.state.pictureName} />
+            <ToastContainer/>
             </Container>
+            
+        
 
     }
 }

@@ -11,13 +11,12 @@ class SearchBar extends Component {
 
     handleOnChangeInput =(event) =>{
        this.setState({value: event.currentTarget.value})
-       
     }
 
     handleOnSubmit =(event) => {
         event.preventDefault();
         if(this.state.value.trim() === ''){
-            return toast.info('Enter pictures name')
+            return toast.info('Enter what you want to find')
         }
         this.props.onSubmit(this.state.value)
     }
