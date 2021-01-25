@@ -5,7 +5,11 @@ export const PER_PAGE = 12;
 function fetchPicturesApi (name, page)
 {
     return fetch(`${BASE_URL}/?q=${name}&page=${page}&key=${KEY}&image_type=photo&orientation=horizontal&per_page=${PER_PAGE}`)
-    .then((res) => { if( res.ok ) { return res.json() }return Promise.reject(new Error('Something go wrong, try again'))})
+    .then((res) => { 
+        if( res.ok ) { 
+            return res.json()
+        }
+        return Promise.reject(new Error('Something go wrong, try again'))})
 }
 
 const api = {fetchPicturesApi}
