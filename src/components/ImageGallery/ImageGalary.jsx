@@ -2,22 +2,15 @@ import styles from './imageGallery.module.css'
 import ImageGalleryItem from '../ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 
-
 function ImageGalary({ pictures, onClick, children}) {
     return <>
-              <ul className={styles.imageGallery}> {
+             <ul className={styles.imageGallery}> {
                   pictures.map((picture) => {
                       return <ImageGalleryItem key = {picture.webformatURL} onClick ={onClick} picture ={picture}/>})}
              </ul>
            {children}
-           
-
            </>
 }
-
-
-export default ImageGalary
-
 
 
 ImageGalary.propTypes ={
@@ -26,3 +19,5 @@ ImageGalary.propTypes ={
    children: PropTypes.node,
   
 }
+
+export default ImageGalary

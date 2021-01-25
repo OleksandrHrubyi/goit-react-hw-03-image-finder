@@ -8,32 +8,21 @@ import ImageGallery from './ImageGalleryRender/ImageGalleryRender';
 
 
 class App extends Component  {
-
-    state ={
+   state ={
         pictureName: '',
     }
-
-
+    
     handleOnSubmit =(pictureName) => {
-       
-      this.setState({pictureName})
-        
+        this.setState({pictureName})
     }
-
-
-
-
+    
     render(){
-        
         return <Container>
             <SearchBar onSubmit ={this.handleOnSubmit}/>
             <ImageGallery pictureName ={this.state.pictureName} />
             <ToastContainer/>
             </Container>
-            
-        
-
-    }
+            }
 }
 
 
