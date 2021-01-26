@@ -5,9 +5,8 @@ function Container({ children }) {
   return <div className={styles.container}>{children}</div>;
 }
 
-export default Container;
-
-
 Container.propTypes = {
   children: PropTypes.node,
 }
+
+export default Container;

@@ -3,31 +3,29 @@ import React,{Component} from 'react';
 import { toast } from 'react-toastify';
 
 class SearchBar extends Component {
-    
     state ={
         value: '',
     }
     
-    handleOnChangeInput =(event) =>{
+    handleOnChangeInput = (event) => {
        this.setState({value: event.currentTarget.value})
     }
 
-    handleOnSubmit =(event) => {
+    handleOnSubmit = (event) => {
         event.preventDefault();
-        if(this.state.value.trim() === ''){
+        if( this.state.value.trim() === '' ){
             return toast.info('Enter what you want to find')
         }
         this.props.onSubmit(this.state.value)
     }
     
-    render(){
+    render () {
        return <header className={styles.searchbar}>
                  <form className={styles.searchForm} onSubmit = {this.handleOnSubmit}>
                      <button type="submit" className={styles.searchFormButton}>
                          <span className={styles.searchFormButtonLabel}>Search</span>
                      </button>
-                         
-                         <input onChange ={this.handleOnChangeInput}
+                     <input onChange ={this.handleOnChangeInput}
                          className={styles.input} type="text" 
                          autoComplete="off" 
                          autoFocus

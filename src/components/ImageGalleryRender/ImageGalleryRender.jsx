@@ -39,16 +39,20 @@ class ImageGalleryRender extends Component {
           })
           
           picturesApi.fetchPicturesApi(this.props.pictureName, counter = 1)
-            .then((res) => { if( res.hits.length === 0 ){ toast.info('We did not find any pictures') } return this.setState({pictures: res.hits, status: 'resolve', totalHits: res.totalHits})})
-            .catch(error => this.setState({error, status: 'rejected'}))
+            .then((res) => { if( res.hits.length === 0 )
+                { toast.info('We did not find any pictures') } 
+                return this.setState({pictures: res.hits, status: 'resolve', totalHits: res.totalHits})})
+            .catch(error => this.setState({error, status: 'rejected'}))}
         }
-    }
     
     handleLoadMore = (event) => {
         this.setState({spinner: true})
          picturesApi.fetchPicturesApi(this.props.pictureName, counter += 1)
-        .then((res) => { return this.setState((prevState) => {return{pictures: [...prevState.pictures, ...res.hits],spinner: false}})})
-        .catch(error => this.setState({error, status: 'rejected'})).finally(()=>{this.scroll()})
+        .then((res) => { return this.setState((prevState) => {
+            return { pictures: [...prevState.pictures, ...res.hits], 
+                     spinner: false}})})
+        .catch(error => this.setState({ error, status: 'rejected' }))
+        .finally(() => { this.scroll() })
     }
     
     scroll  = () =>{
@@ -58,14 +62,14 @@ class ImageGalleryRender extends Component {
           });
     }
     
-    handleKeyDown =(event) => {
+    handleKeyDown = (event) => {
         if(event.code === 'Escape')
         {
             this.setState({isModal: false})
         }
     }
     
-    handleOnClick =(event) => {
+    handleOnClick = (event) => {
        this.setState({isModal: true,
         src: event.currentTarget.dataset.large,
         name: event.currentTarget.dataset.name})
@@ -81,14 +85,14 @@ class ImageGalleryRender extends Component {
     render (){
         const {pictures, error, status, isModal, name, src, totalHits, spinner} = this.state;
         
-        if(status === 'idle')
+        if( status === 'idle' )
         {
           return <></>
         }
 
         if ( status === 'pending' )
         {
-            return   <Loader className ={styles.loader} type="ThreeDots" color="#00BFFF" height={50} width={50}  />
+            return <Loader className ={styles.loader} type="ThreeDots" color="#00BFFF" height={50} width={50}/>
         }
 
         if ( status === 'resolve' )
@@ -102,7 +106,7 @@ class ImageGalleryRender extends Component {
                 </>
         }
         
-        if(status === 'rejected')
+        if( status === 'rejected' )
         {
             return <h1>{error.message}</h1>
         }

@@ -17,7 +17,6 @@ ImageGalary.propTypes ={
    pictures: PropTypes.array,
    onClick: PropTypes.func,
    children: PropTypes.node,
-  
 }
 
 export default ImageGalary

@@ -8,11 +8,11 @@ import ImageGallery from './ImageGalleryRender/ImageGalleryRender';
 
 
 class App extends Component  {
-   state ={
+   state = {
         pictureName: '',
     }
     
-    handleOnSubmit =(pictureName) => {
+    handleOnSubmit = (pictureName) => {
         this.setState({pictureName})
     }
     
