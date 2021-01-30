@@ -1,5 +1,5 @@
-import styles from '../Container/container.module.css';
-import PropTypes from 'prop-types';
+import styles from "../Container/container.module.css";
+import PropTypes from "prop-types";
 
 function Container({ children }) {
   return <div className={styles.container}>{children}</div>;
@@ -7,6 +7,6 @@ function Container({ children }) {
 
 Container.propTypes = {
   children: PropTypes.node,
-}
+};
 
 export default Container;
